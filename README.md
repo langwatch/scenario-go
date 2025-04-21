@@ -1,8 +1,12 @@
 ![scenario](https://github.com/langwatch/scenario-go/raw/main/assets/scenario-wide.webp)
 
-<div align="center">
-<!-- Discord, pkg dev, Docs, etc links -->
-</div>
+
+![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/langwatch/scenario-go/ci.yml)
+![GoDoc](https://godoc.org/github.com/langwatch/scenario-go?status.svg)
+![GitHub Release](https://img.shields.io/github/v/release/langwatch/scenario-go)
+![Go Report Card](https://goreportcard.com/badge/github.com/langwatch/scenario-go)
+![Discord](https://img.shields.io/discord/1227886780536324106?label=join%20our%20discord%20community&color=%235865F2)
+
 
 # Scenario (Go): Use an Agent to test your Agent
 

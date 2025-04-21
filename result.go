@@ -85,16 +85,15 @@ func NewInconclusivePartialResult(
 // LogResultDetails logs detailed information about the Result struct. It's useful to call
 // this in your tests on failure to get more context about the result, which will aid you
 // with debugging.
-func LogResultDetails(t *testing.T, res Result) {
-	t.Helper() // so that failures are attributed to the correct line in tests
+func (r *Result) LogResultDetails(t *testing.T) {
+	t.Helper()
 
-	// Option 1: Format key fields manually.
 	t.Logf("Test Result Details:")
-	t.Logf("Success: %v", res.Success)
-	t.Logf("Reasoning: %s", res.Reasoning)
-	t.Logf("Met Criteria: %v", res.MetCriteria)
-	t.Logf("Unmet Criteria: %v", res.UnmetCriteria)
-	t.Logf("Triggered Failures: %v", res.TriggeredFailures)
-	t.Logf("Total Duration (ns): %v", res.TotalDurationNSec)
-	t.Logf("Agent Duration (ns): %v", res.AgentDurationNSec)
+	t.Logf("Success: %v", r.Success)
+	t.Logf("Reasoning: %s", r.Reasoning)
+	t.Logf("Met Criteria: %v", r.MetCriteria)
+	t.Logf("Unmet Criteria: %v", r.UnmetCriteria)
+	t.Logf("Triggered Failures: %v", r.TriggeredFailures)
+	t.Logf("Total Duration (ns): %v", r.TotalDurationNSec)
+	t.Logf("Agent Duration (ns): %v", r.AgentDurationNSec)
 }

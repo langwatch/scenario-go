@@ -18,7 +18,7 @@ Install scenario:
 go get github.com/langwatch/scenario-go
 ```
 
-Now create your first scenario and save it as `examples/vegetarian_recipe_agent_test.go`: 
+Now create your first test scenario and save it as `vegetarianrecipeagent_test.go`: 
 
 ```go
 package examples_test
@@ -32,7 +32,7 @@ import (
 	"github.com/openai/openai-go"
 )
 
-func TestVegetarianRecipeAgent(t *testing.T) {
+func Test_VegetarianRecipeAgent(t *testing.T) {
 	ctx := context.Background()
 	sc := scenario.NewScenario(
 		scenario.WithDescription("User is looking for a dinner idea"),
@@ -118,3 +118,38 @@ Create a `.env` file and put your OpenAI API key in it:
 OPENAI_API_KEY=<your-api-key>
 ```
 
+Now run it with go test:
+
+```bash
+go test test_vegetarian_recipe_agent.go
+```
+
+You can find a fully working example in [examples/vegetarianrecipeagent_test.py](examples/vegetarianrecipeagent_test.go).
+
+## Customize strategy and max_turns
+
+You can customize how should the testing agent go about testing by defining a Strategy. You can also limit the maximum number of turns the scenario will take by setting the MaxTurns option, this defaults to 10.
+
+For example, in this Lovable Clone scenario test:
+
+```go
+sc := scenario.NewScenario(
+    scenario.WithDescription("User wants to create a new landing page for their dog walking startup"),
+    scenario.WithAgent(lovable_agent),
+    scenario.WithStrategy("send the first message to generate the landing page, then a single follow up request to extend it, then give your final verdict"),
+    scenario.WithSuccessCriteria([
+        "agent reads the files before go and making changes",
+        "agent modified the index.css file",
+        "agent modified the Index.tsx file",
+        "agent created a comprehensive landing page",
+        "agent extended the landing page with a new section",
+    ],
+    scenario.WithFailureCriteria([
+        "agent says it can't read the file",
+        "agent produces incomplete code or is too lazy to finish",
+    ],
+    scenario.WithMaxTurns(5),
+)
+
+result, err := sc.Run(ctx)
+```

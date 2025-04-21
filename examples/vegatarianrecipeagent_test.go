@@ -31,6 +31,7 @@ func TestVegetarianRecipeAgent(t *testing.T) {
 		t.Fatalf("scenario failed to run: %v", err)
 	}
 	if !result.Success {
+		result.LogResultDetails(t)
 		t.Errorf("expected success but got failure")
 	}
 }

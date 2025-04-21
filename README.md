@@ -158,8 +158,8 @@ result, err := sc.Run(ctx)
 
 The testing agent uses the `LLMCompletion` interface to perform LLM interactions. You can
 use any LLM you want, you just need to implement the `LLMCompletion` interface. Scenario
-ships with a `OpenAICompletion` implementation that you can use as a reference. View it
-[here](https://github.com/langwatch/scenario-go/blob/main/llm_openai.go).
+ships with an implementation of OpenAI under `OpenAICompletion` that you can use as a
+reference. View it [here](https://github.com/langwatch/scenario-go/blob/main/llm_openai.go).
 
 ## Contributing
 

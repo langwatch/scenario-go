@@ -153,3 +153,14 @@ sc := scenario.NewScenario(
 
 result, err := sc.Run(ctx)
 ```
+
+## Completions
+
+The testing agent uses the `LLMCompletion` interface to perform LLM interactions. You can
+use any LLM you want, you just need to implement the `LLMCompletion` interface. Scenario
+ships with a `OpenAICompletion` implementation that you can use as a reference. View it
+[here](https://github.com/langwatch/scenario-go/blob/main/llm_openai.go).
+
+## Contributing
+
+We welcome contributions!

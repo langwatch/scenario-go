@@ -145,13 +145,14 @@ func (t *testingAgent) GenerateNextMessage(
 	}
 
 	for _, message := range messages {
-		if len(message.ToolCalls) > 0 {
+		if len(message.Tools) > 0 {
 			continue
 		}
 
-		if message.Role == MessageRoleAssistant {
+		switch message.Role {
+		case MessageRoleAssistant:
 			message.Role = MessageRoleUser
-		} else if message.Role == MessageRoleUser {
+		case MessageRoleUser:
 			message.Role = MessageRoleAssistant
 		}
 	}

@@ -33,8 +33,8 @@ type Message struct {
 	// Content is the content of the message.
 	Content string
 
-	// ToolCalls contains the tool calls available to the message.
-	ToolCalls []any
+	// Tools contains the tools available to the message.
+	Tools []Tool
 }
 
 // Tool represents a tool that can be used in a message.
